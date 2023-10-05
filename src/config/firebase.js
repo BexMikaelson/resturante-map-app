@@ -3,8 +3,10 @@ import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getFirestore , doc, getDoc, addDoc, updateDoc, deleteDoc, collection, query, where, getDocs } from 'firebase/firestore';
 
 // Your web app's Firebase configuration
+// ToDo add to .ENV fil variabler
 const firebaseConfig = {
   apiKey: "AIzaSyBmuUoHW7GemxPgiPVNkfUFNaXA0mBu5Ew",
   authDomain: "resturante-map-app.firebaseapp.com",
@@ -18,3 +20,4 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
+export const db = getFirestore(app);
