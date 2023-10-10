@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
+import { Form, Button, Container, Alert } from "react-bootstrap";
 
 export const Auth = () => {
   const {
     user,
     createAccount,
     signIn,
-    signInWithGoogle,
     logout,
   } = useContext(AuthContext);
   
@@ -16,143 +16,69 @@ export const Auth = () => {
   const [createAcountPassword, setCreateAcountPassword] = useState("");
 
   return (
-    <div>
-      {/* Login form */}
-      <input
-        placeholder="Email..."
-        onChange={(e) => setLoginEmail(e.target.value)}
-      />
-      <input
-        placeholder="Password"
-        type="password"
-        onChange={(e) => setLoginPassword(e.target.value)}
-      />
-      <button onClick={() => signIn(loginEmail, loginPassword)}>Sign In</button>
-      <button onClick={signInWithGoogle}>Sign In with Google</button>
-      <button onClick={logout}>Sign Out</button>
+    <Container style={{ maxWidth: "400px", marginTop: "2rem" }}>
+      <Form.Group className="mb-3">
+      <div><h3>Logga in</h3></div>
+        <Form.Label>Email</Form.Label>
+        <Form.Control
+          type="email"
+          placeholder="Email..."
+          onChange={(e) => setLoginEmail(e.target.value)}
+        />
+      </Form.Group>
 
-      {/* Signup form */}
-      <input
-        placeholder="Email..."
-        onChange={(e) => setCreateAcountEmail(e.target.value)}
-      />
-      <input
-        placeholder="Password"
-        type="password"
-        onChange={(e) => setCreateAcountPassword(e.target.value)}
-      />
-      <button
-        onClick={() => createAccount(createAcountEmail, createAcountPassword)}
-      >
+      <Form.Group className="mb-3">
+        <Form.Label>Password</Form.Label>
+        <Form.Control
+          type="password"
+          placeholder="Password"
+          onChange={(e) => setLoginPassword(e.target.value)}
+        />
+      </Form.Group>
+
+      <Button variant="primary" onClick={() => signIn(loginEmail, loginPassword)}>
+        Logga in
+      </Button>
+      <Button variant="secondary" className="ms-2" onClick={logout}>
+        Logga ut
+      </Button>
+      <hr />
+
+      <Form.Group className="mb-3">
+        <div><h3>Skapa Konto</h3></div>
+        <Form.Label>Email</Form.Label>
+        <Form.Control
+          type="email"
+          placeholder="Email..."
+          onChange={(e) => setCreateAcountEmail(e.target.value)}
+        />
+      </Form.Group>
+
+      <Form.Group className="mb-3">
+        <Form.Label>Password</Form.Label>
+        <Form.Control
+          type="password"
+          placeholder="Password"
+          onChange={(e) => setCreateAcountPassword(e.target.value)}
+        />
+      </Form.Group>
+
+      <Button variant="success" onClick={() => createAccount(createAcountEmail, createAcountPassword)}>
         Skapa konto
-      </button>
+      </Button>
+
+      <hr />
 
       {user ? (
-        <div>
-          <p>Inloggad som: {user.email}</p>
-        </div>
+        <Alert variant="info">Inloggad som: {user.email}</Alert>
       ) : (
-        <div>
-          <p>Du är inte inloggad.</p>
-        </div>
+        <Alert variant="warning">Du är inte inloggad.</Alert>
       )}
-    </div>
+    </Container>
+ 
   );
 };
 
-
-
-/* import { auth, googleProvider } from "../config/firebase";
-import {createUserWithEmailAndPassword, signInWithPopup, signOut, signInWithEmailAndPassword, onAuthStateChanged} from "firebase/auth";
-import { useState, useEffect } from "react";
-
-
-
-
-export const Auth = () => {
-    const [loginEmail, setLoginEmail] = useState("");
-    const [loginPassword, setLoginPassword] = useState("");
-    const [createAcountEmail, setCreateAcountEmail] = useState("");
-    const [createAcountPassword, setCreateAcountPassword] = useState("");
-    const [user, setUser] = useState(null);
-
-    useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged((authUser) => {
-          if (authUser) {
-            // Användaren är inloggad
-            setUser(authUser);
-          } else {
-            // Användaren är utloggad
-            setUser(null);
-          }
-        });
-    
-        // Komponentrens unsubscribe-funktion
-        return () => unsubscribe();
-      }, []);
-
-    console.log(auth?.currentUser?.email)
-
-    const createAccount = async () => {
-        try {
-            await createUserWithEmailAndPassword(auth, createAcountEmail, createAcountPassword);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
-    const signIn = async () => {
-        try {
-            await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
-    const signInWithGoogle = async () => {
-        try {
-            await signInWithPopup (auth, googleProvider);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
-    const logout = async () => {
-        try {
-            await signOut (auth);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
-    return (
-        <div>
-            <input placeholder="Email..." onChange={(e) => setLoginEmail (e.target.value)} />
-            <input placeholder="Password" type={"password"} onChange={(e) => setLoginPassword (e.target.value)} />
-            <button onClick={signIn}>Sign In</button>
-            <button onClick={signInWithGoogle}>Sign In with Google</button>
-            <button onClick={logout}>Sign Out</button>
-
-            <input placeholder="Email..." onChange={(e) => setCreateAcountEmail (e.target.value)} />
-            <input placeholder="Password" type={"password"} onChange={(e) => setCreateAcountPassword (e.target.value)} />
-            <button onClick={createAccount}>Skapa konto</button>
-            <div>Användare</div>
-            
-
-            {user ? (
-        <div>
-          <p>Inloggad som: {user?.email}</p>
-          
-        </div>
-      ) : (
-        <div>
-          <p>Du är inte inloggad.</p>
-          
-        </div>
-      )}
-        </div>
-    );    
-}; */
 
 
 
