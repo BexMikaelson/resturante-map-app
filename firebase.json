@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "resturante-map-app",
+    "public": "build",
     "ignore": [
       "firebase.json",
       "**/.*",
