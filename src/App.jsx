@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import  {AuthProvider} from './contexts/AuthContext';
-import {Auth} from './components/Auth';
+import Auth from './components/Auth';
 import Navigation from './components/Navigation';
 import RestaurantDetails from './components/RestaurantDetails';
 import Home from './pages/Home';

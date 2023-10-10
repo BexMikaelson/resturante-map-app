@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { Form, Button, Container, Alert } from "react-bootstrap";
 
-export const Auth = () => {
+ const Auth = () => {
   const {
     user,
     createAccount,
@@ -79,7 +79,7 @@ export const Auth = () => {
   );
 };
 
-
+export default Auth
 
 
 
