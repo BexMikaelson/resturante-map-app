@@ -10,7 +10,7 @@ const Navigation = () => {
   return (
     <Navbar expand="md" bg="dark" data-bs-theme="dark">
       <Container>
-        <Navbar.Brand>The Pizza Map</Navbar.Brand>
+        <Navbar.Brand><Nav.Link href="/">The Pizza Map</Nav.Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
