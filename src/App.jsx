@@ -1,29 +1,29 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
-// Components & Context
-import { AuthProvider } from './contexts/AuthContext';
+import  {AuthProvider} from './contexts/AuthContext';
 import {Auth} from './components/Auth';
 import Navigation from './components/Navigation';
-import RestaurantsList from './pages/RestaurantsList';
-import RestaurantDetails from './pages/RestaurantDetails';
+import RestaurantDetails from './components/RestaurantDetails';
+import Home from './pages/Home';
+import Admin from './pages/Admin';
+import RestaurantsPage from './pages/Restaurants';
 
 const App = () => {
   return (
-    <AuthProvider>
+    <div>
       <Router>
-        <Navigation />
-        <Routes>
-          <Route path="/" element={<div>Hem</div>} />
-          <Route path="/search" element={<div>Sök</div>} />
-          <Route path="/location" element={<div>Min position</div>} />
-          <Route path="/admin" element={<div>Admin-panel</div>} />
-          <Route path="/auth" element={<Auth />} />
-          <Route path="/RestaurantsList" element={<RestaurantsList/>} />
+      <AuthProvider>
+      <Navigation />
+      <Routes>
+         <Route path="/home" element={<Home/>} />
+          <Route path="/adminPanel" element={<Admin />} />
+          <Route path="/Auth" element={<Auth />} />
+          <Route path="/RestaurantsPage" element={<RestaurantsPage/>} />
           <Route path="/restaurant/:id" element={<RestaurantDetails />} />
-        </Routes>
+      </Routes>
+      </AuthProvider>
       </Router>
-    </AuthProvider>
+    </div>
   );
 }
 
