@@ -1,8 +1,7 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
-import { auth, googleProvider } from "../config/firebase";
+import { auth } from "../config/firebase";
 import {
   createUserWithEmailAndPassword,
-  signInWithPopup,
   signOut,
   signInWithEmailAndPassword,
   onAuthStateChanged,
@@ -36,14 +35,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const signInWithGoogle = async () => {
-    try {
-      await signInWithPopup(auth, googleProvider);
-    } catch (error) {
-      console.error("Error signing in with Google:", error);
-    }
-  };
-
   const logout = async () => {
     try {
       await signOut(auth);
@@ -54,14 +45,12 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, createAccount, signIn, signInWithGoogle, logout }}
+      value={{ user, createAccount, signIn, logout }}
     >
       {children}
     </AuthContext.Provider>
   );
 };
-
-// ... (din tidigare kod)
 
 export const useAuth = () => {
   return useContext(AuthContext);
