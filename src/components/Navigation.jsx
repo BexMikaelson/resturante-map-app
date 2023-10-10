@@ -1,27 +1,34 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+import React from 'react';
+import { useAuth} from '../contexts/AuthContext';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 
 const Navigation = () => {
-  const { user } = useAuth();
+   const { user} = useAuth();
 
   return (
-    <nav>
-      <ul>
-        <li><Link to="/">Hem</Link></li>
-        <li><Link to="/search">Sök</Link></li>
-        <li><Link to="/RestaurantsList">Restauranger</Link></li>
-        {user ? (
-          <>
-            <li><Link to="/auth">Logga in/Registrera</Link></li>
-            <li><Link to="/location">Min position</Link></li>
-            <li><Link to="/admin">Admin-panel</Link></li>
-          </>
-        ) : (
-          <li><Link to="/auth">Logga in/Registrera</Link></li>
-        )}
-      </ul>
-    </nav>
+    <Navbar expand="md" bg="dark" data-bs-theme="dark">
+      <Container>
+        <Navbar.Brand>The Pizza Map</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="/home">Home</Nav.Link>
+            <Nav.Link href="/RestaurantsPage">Restauranger</Nav.Link>
+            {user ? (
+            <>
+            <Nav.Link href="/Auth">Logga in/Registrera</Nav.Link>
+            <Nav.Link href="/adminPanel">Admin-panel</Nav.Link>
+            </>
+            ):(
+            <Nav.Link href="/Auth">Logga in/Registrera</Nav.Link>
+            )}
+ 
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }
 
