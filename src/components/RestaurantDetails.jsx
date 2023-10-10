@@ -27,9 +27,21 @@ const RestaurantDetails = () => {
                 <ListGroup.Item>Telefon: {restaurantDetails?.Telefon}</ListGroup.Item>
                 <ListGroup.Item>E-post: {restaurantDetails?.Email}</ListGroup.Item>
                 <ListGroup.Item>Hemsida: <a href={restaurantDetails?.website}>{restaurantDetails?.website}</a></ListGroup.Item>
-                <ListGroup.Item>Facebook: <a href={restaurantDetails?.Facebook} target="_blank" rel="noopener noreferrer">{restaurantDetails?.Facebook}</a></ListGroup.Item>
-                <ListGroup.Item>Instagram: <a href={restaurantDetails?.Instagram} target="_blank" rel="noopener noreferrer">{restaurantDetails?.Instagram}</a></ListGroup.Item>
-                <ListGroup.Item>Google Maps: <a href={restaurantDetails?.GoogleMaps}>{restaurantDetails?.GoogleMaps}</a></ListGroup.Item>
+                <ListGroup.Item className="d-flex align-items-center">Facebook: 
+                    <a href={restaurantDetails?.Facebook}>
+                        <i className="fa fa-facebook-official fa-3x" aria-hidden="true"></i>
+                    </a>
+                </ListGroup.Item>
+                <ListGroup.Item className="d-flex align-items-center">Instagram: 
+                    <a href={restaurantDetails?.Instagram}>
+                        <i className="fa fa-instagram fa-3x" aria-hidden="true"></i>
+                    </a>
+                </ListGroup.Item>
+                <ListGroup.Item className="d-flex align-items-center">Google Maps: 
+                    <a href={restaurantDetails?.GoogleMaps}>
+                        <i className="fa fa-map-marker fa-3x" aria-hidden="true"></i> 
+                    </a>
+                </ListGroup.Item>
             </ListGroup>
         </Card.Body>
     </Card>

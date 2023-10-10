@@ -7,6 +7,8 @@ import RestaurantDetails from './components/RestaurantDetails';
 import Home from './pages/Home';
 import Admin from './pages/Admin';
 import RestaurantsPage from './pages/Restaurants';
+import 'font-awesome/css/font-awesome.min.css';
+
 
 const App = () => {
   return (
