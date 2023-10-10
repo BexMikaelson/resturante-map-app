@@ -1,8 +1,6 @@
-// useFetchRestaurantDetails.js
-
 import { useState, useEffect } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
-import { db } from '../config/firebase';  // Importera din Firestore-databas
+import { db } from '../config/firebase';
 
 const useFetchRestaurantDetails = (restaurantId) => {
   const [loading, setLoading] = useState(true);
