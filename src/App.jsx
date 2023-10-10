@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import  {AuthProvider} from './contexts/AuthContext';
-import Auth from './components/Auth';
+import Account from './pages/Account'
 import Navigation from './components/Navigation';
 import RestaurantDetails from './components/RestaurantDetails';
 import Home from './pages/Home';
@@ -19,7 +19,7 @@ const App = () => {
       <Routes>
          <Route path="/home" element={<Home/>} />
           <Route path="/adminPanel" element={<Admin />} />
-          <Route path="/Auth" element={<Auth />} />
+          <Route path="/Auth" element={<Account />} />
           <Route path="/RestaurantsPage" element={<RestaurantsPage/>} />
           <Route path="/restaurant/:id" element={<RestaurantDetails />} />
       </Routes>
