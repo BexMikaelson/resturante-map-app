@@ -1,19 +1,14 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
-import { getFirestore , doc, getDoc, addDoc, updateDoc, deleteDoc, collection, query, where, getDocs } from 'firebase/firestore';
+import { getFirestore } from 'firebase/firestore';
 
-// Your web app's Firebase configuration
-// ToDo add to .ENV fil variabler
 const firebaseConfig = {
-  apiKey: "AIzaSyBmuUoHW7GemxPgiPVNkfUFNaXA0mBu5Ew",
-  authDomain: "resturante-map-app.firebaseapp.com",
-  projectId: "resturante-map-app",
-  storageBucket: "resturante-map-app.appspot.com",
-  messagingSenderId: "305605537961",
-  appId: "1:305605537961:web:2efad30c8c98210b1f79b8"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID
 };
 
 // Initialize Firebase
