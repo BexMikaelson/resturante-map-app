@@ -18,11 +18,11 @@ const Navigation = () => {
             <Nav.Link href="/RestaurantsPage">Restauranger</Nav.Link>
             {user ? (
             <>
-            <Nav.Link href="/Auth">Logga in/Registrera</Nav.Link>
+            <Nav.Link href="/auth">Logga in/Registrera</Nav.Link>
             <Nav.Link href="/adminPanel">Admin-panel</Nav.Link>
             </>
             ):(
-            <Nav.Link href="/Auth">Logga in/Registrera</Nav.Link>
+            <Nav.Link href="/auth">Logga in/Registrera</Nav.Link>
             )}
  
           </Nav>
