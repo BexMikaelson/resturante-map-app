@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { db } from '../config/firebase';  // Antaget att du har Firebase konfiguration i denna fil
+import { db } from '../config/firebase';
 import { collection, getDocs } from "firebase/firestore";
 
 const useFetchRestaurants = () => {
@@ -10,7 +10,7 @@ const useFetchRestaurants = () => {
   useEffect(() => {
     const fetchRestaurants = async () => {
       try {
-        const restaurantsCollection = collection(db, 'pizza resturants');  // Antaget att din collection heter "restaurants"
+        const restaurantsCollection = collection(db, 'pizza resturants');
         const snapshot = await getDocs(restaurantsCollection);
         
         const fetchedRestaurants = snapshot.docs.map(doc => ({
