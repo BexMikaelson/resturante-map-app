@@ -73,17 +73,7 @@ const RestaurantMap = () => {
         center={mapCenter}
         zoom={12}
       >
-        {/* {restaurants.map(restaurant => (
-          <Marker
-            key={restaurant.id}
-            position={{ 
-              lat: parseFloat(restaurant.lat), 
-              lng: parseFloat(restaurant.long)
-            }}
-            title={restaurant.name}
-            onClick={() => setSelectedRestaurant(restaurant)}
-          />
-        ))} */}
+
 
         {restaurantLocations?.map((restaurant) => {
           if (restaurant?.location?.lat && restaurant?.location?.lng) {

@@ -16,7 +16,7 @@ const Navigation = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Item>
-              <Nav.Link as={NavLink} to="/" exact>
+              <Nav.Link as={NavLink} to="/">
                 Hem
               </Nav.Link>
             </Nav.Item>
