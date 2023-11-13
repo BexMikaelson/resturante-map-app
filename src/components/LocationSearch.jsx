@@ -3,7 +3,7 @@ import { Autocomplete } from '@react-google-maps/api';
 import { Container, Form, Button, InputGroup } from 'react-bootstrap';
 
 
-const LocationSearch = ({ onPlaceSelected }) => {
+const LocationSearch = ({ onPlaceSelected, restaurantLocations }) => {
   const [inputValue, setInputValue] = useState("");
   const autocompleteRef = useRef(null);
   let stopScrolling = false;
@@ -53,13 +53,15 @@ const LocationSearch = ({ onPlaceSelected }) => {
     stopScrolling = false;
   }
 
+  const resturanger = [];
+
   return (
     
       <Container>
         <Form className="my-4">
         <InputGroup>
             <Autocomplete
-              onLoad={(ref) => autocompleteRef.current = ref}
+            onLoad={(ref) => autocompleteRef.current = ref}
               >
               <Form.Control 
                   id="autocomplete"
@@ -69,8 +71,7 @@ const LocationSearch = ({ onPlaceSelected }) => {
                   onChange={handleInput}
                   onTouchStart={onTouchStart}
                   onTouchEnd={onTouchEnd}
-              />
-              
+                  />
             </Autocomplete>
                 <Button variant="primary" onClick={handleSearch}>Sök</Button>
                 <Button variant="secondary" onClick={handleReset}>Återställ</Button>
