@@ -9,7 +9,7 @@ const AdminDashboard = () => {
     const [restaurants, setRestaurants] = useState([]);
     const [name, setName] = useState('');
     const [Ort, setOrt] = useState('');
-    const [website, setWebsite] = useState('');  
+    const [Website, setWebsite] = useState('');  
     const [cuisine, setCuisine] = useState('');
     const [typ, setTyp] = useState('');
     const [phonenumber, setPhonenumber] = useState('');
@@ -26,7 +26,7 @@ const AdminDashboard = () => {
     useEffect(() => {
         if (user && user.email === import.meta.env.VITE_ADMIN_EMAIL) {
             setLoading(true);
-            const unsubscribe = onSnapshot(collection(db, 'pizza resturants'), snapshot => {
+          const unsubscribe = onSnapshot(collection(db, 'pizza resturants'), snapshot => {
                 setRestaurants(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
                 setLoading(false);
             });
@@ -39,19 +39,19 @@ const AdminDashboard = () => {
         setLoading(true);
         setError('');
         try {
-            if (editMode) {
+          if (editMode) {
                 await updateDoc(doc(db, 'pizza resturants', currentRestaurantId), {
                     name,
                     Ort,
-                    website, 
-                    cuisine, 
-                    typ, 
-                    phonenumber, 
+                    Website, 
+                    Utbud: cuisine, 
+                    Typ: typ, 
+                    Telefon: phonenumber, 
                     instagram, 
-                    adress, 
-                    email, 
-                    facebook, 
-                    description,
+                    Gatuadress: adress, 
+                    Email: email, 
+                    Facebook: facebook, 
+                    Beskrivning: description,
                 });
                 setEditMode(false);
                 setCurrentRestaurantId(null);
@@ -59,15 +59,15 @@ const AdminDashboard = () => {
                 await addDoc(collection(db, 'pizza resturants'), {
                     name,
                     Ort,
-                    website, 
-                    cuisine, 
-                    typ, 
-                    phonenumber, 
+                    Website, 
+                    Utbud: cuisine, 
+                    Typ: typ, 
+                    Telefon: phonenumber, 
                     instagram, 
-                    adress, 
+                    Gatuadress: adress, 
                     email, 
-                    facebook, 
-                    description,
+                    Facebook: facebook, 
+                    Beskrivning: description,
                 });
             }
             setName('');
@@ -100,18 +100,18 @@ const AdminDashboard = () => {
 
     const startEditing = (restaurant) => {
         setEditMode(true);
-        setCurrentRestaurantId(restaurant.id);
-        setName(restaurant.name);
-        setOrt(restaurant.Ort);
-        setWebsite(restaurant.website);
-        setCuisine(restaurant.Utbud);
-        setTyp(restaurant.Typ);
-        setPhonenumber(restaurant.Telefon);
-        setInstagram(restaurant.Instagram);
-        setAdress(restaurant.Gatuadress);
-        setEmail(restaurant.Email); 
-        setFacebook(restaurant.Facebook);
-        setDescription(restaurant.Beskrivning);
+        setCurrentRestaurantId(restaurant.id ?? '');
+        setName(restaurant.name ?? '');
+        setOrt(restaurant.Ort ?? '');
+        setWebsite(restaurant.Website ?? '');
+        setCuisine(restaurant.Utbud ?? '');
+        setTyp(restaurant.Typ ?? '');
+        setPhonenumber(restaurant.Telefon ?? '');
+        setInstagram(restaurant.instagram ?? '');
+        setAdress(restaurant.Gatuadress ?? '');
+        setEmail(restaurant.Email ?? ''); 
+        setFacebook(restaurant.Facebook ?? '');
+        setDescription(restaurant.Beskrivning ?? '');
     };
 
     if (!user || user.email !== 'admin@example.com') return <div>Access denied!</div>;
@@ -141,7 +141,7 @@ const AdminDashboard = () => {
           </Row>
           <Row>
             <Form.Control
-              value={website}
+              value={Website}
               onChange={e => setWebsite(e.target.value)}
               placeholder="Restaurant Website"
             />
