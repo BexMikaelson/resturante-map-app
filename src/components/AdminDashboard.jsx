@@ -9,6 +9,15 @@ const AdminDashboard = () => {
     const [restaurants, setRestaurants] = useState([]);
     const [name, setName] = useState('');
     const [Ort, setOrt] = useState('');
+    const [website, setWebsite] = useState('');  
+    const [cuisine, setCuisine] = useState('');
+    const [typ, setTyp] = useState('');
+    const [phonenumber, setPhonenumber] = useState('');
+    const [instagram, setInstagram] = useState('');
+    const [adress, setAdress] = useState('');
+    const [email, setEmail] = useState('');
+    const [facebook, setFacebook] = useState('');
+    const [description, setDescription] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [editMode, setEditMode] = useState(false);
@@ -34,6 +43,15 @@ const AdminDashboard = () => {
                 await updateDoc(doc(db, 'pizza resturants', currentRestaurantId), {
                     name,
                     Ort,
+                    website, 
+                    cuisine, 
+                    typ, 
+                    phonenumber, 
+                    instagram, 
+                    adress, 
+                    email, 
+                    facebook, 
+                    description,
                 });
                 setEditMode(false);
                 setCurrentRestaurantId(null);
@@ -41,10 +59,28 @@ const AdminDashboard = () => {
                 await addDoc(collection(db, 'pizza resturants'), {
                     name,
                     Ort,
+                    website, 
+                    cuisine, 
+                    typ, 
+                    phonenumber, 
+                    instagram, 
+                    adress, 
+                    email, 
+                    facebook, 
+                    description,
                 });
             }
             setName('');
             setOrt('');
+            setWebsite('');
+            setCuisine('');
+            setTyp('');
+            setPhonenumber('');
+            setInstagram('');
+            setAdress('');
+            setEmail(''); 
+            setFacebook('');
+            setDescription('');
         } catch (err) {
             setError(err.message);
         }
@@ -67,6 +103,15 @@ const AdminDashboard = () => {
         setCurrentRestaurantId(restaurant.id);
         setName(restaurant.name);
         setOrt(restaurant.Ort);
+        setWebsite(restaurant.website);
+        setCuisine(restaurant.Utbud);
+        setTyp(restaurant.Typ);
+        setPhonenumber(restaurant.Telefon);
+        setInstagram(restaurant.Instagram);
+        setAdress(restaurant.Gatuadress);
+        setEmail(restaurant.Email); 
+        setFacebook(restaurant.Facebook);
+        setDescription(restaurant.Beskrivning);
     };
 
     if (!user || user.email !== 'admin@example.com') return <div>Access denied!</div>;
@@ -80,20 +125,83 @@ const AdminDashboard = () => {
 
       <Form>
         <Form.Group as={Row} className="mb-3">
-          <Col>
+          <Row>
             <Form.Control
               value={name}
               onChange={e => setName(e.target.value)}
               placeholder="Restaurant Name"
             />
-          </Col>
-          <Col>
+          </Row>
+          <Row>
             <Form.Control
               value={Ort}
               onChange={e => setOrt(e.target.value)}
-              placeholder="Ort"
+              placeholder="Restaurant Ort/Citie"
             />
-          </Col>
+          </Row>
+          <Row>
+            <Form.Control
+              value={website}
+              onChange={e => setWebsite(e.target.value)}
+              placeholder="Restaurant Website"
+            />
+          </Row>
+          <Row>
+            <Form.Control
+              value={description}
+              onChange={e => setDescription(e.target.value)}
+              placeholder="Restaurant Description"
+            />
+          </Row>
+          <Row>
+            <Form.Control
+              value={facebook}
+              onChange={e => setFacebook(e.target.value)}
+              placeholder="Restaurant Facebook"
+            />
+          </Row>
+          <Row>
+            <Form.Control
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              placeholder="Restaurant Email"
+            />
+          </Row>
+          <Row>
+            <Form.Control
+              value={adress}
+              onChange={e => setAdress(e.target.value)}
+              placeholder="Restaurant Adress"
+            />
+          </Row>
+          <Row>
+            <Form.Control
+              value={instagram}
+              onChange={e => setInstagram(e.target.value)}
+              placeholder="Restaurant Instagram"
+            />
+          </Row>
+          <Row>
+            <Form.Control
+              value={phonenumber}
+              onChange={e => setPhonenumber(e.target.value)}
+              placeholder="Restaurant Phonenumber"
+            />
+          </Row>
+          <Row>
+            <Form.Control
+              value={typ}
+              onChange={e => setTyp(e.target.value)}
+              placeholder="Restaurant Typ"
+            />
+          </Row>
+          <Row>
+            <Form.Control
+              value={cuisine}
+              onChange={e => setCuisine(e.target.value)}
+              placeholder="Restaurant Cuisine"
+            />
+          </Row>
           <Col>
             <Button variant="primary" onClick={addOrUpdateRestaurant}>
               {editMode ? 'Update Restaurant' : 'Add Restaurant'}
@@ -107,6 +215,15 @@ const AdminDashboard = () => {
                   setEditMode(false);
                   setName('');
                   setOrt('');
+                  setWebsite('');
+                  setCuisine('');
+                  setTyp('');
+                  setPhonenumber('');
+                  setInstagram('');
+                  setAdress('');
+                  setEmail(''); 
+                  setFacebook('');
+                  setDescription('');
                 }}
               >
                 Cancel Editing
