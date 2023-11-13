@@ -5,13 +5,14 @@ import { Table } from 'react-bootstrap';
 
 const RestaurantsList = () => {
   const { restaurants: initialRestaurants, loading, error } = useFetchRestaurants();
-  const [sortField, setSortField] = useState(null);
+  const [sortField, setSortField] = useState('name');
   const [sortedRestaurants, setSortedRestaurants] = useState([]);
 
   useEffect(() => {
     let sorted = [...initialRestaurants];
     if (sortField) {
-      sorted.sort((a, b) => (a[sortField] > b[sortField]) ? 1 : -1);
+      /* sorted.sort((a, b) => (a[sortField] > b[sortField]) ? 1 : -1); */
+      sorted.sort((a, b) => (a[sortField]?.localeCompare(b[sortField])));
     }
     setSortedRestaurants(sorted);
   }, [sortField, initialRestaurants]);
@@ -20,6 +21,8 @@ const RestaurantsList = () => {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
+    <>
+    <h3>Klicka på rubrikerna för att sortera Restauranger efter Namn, Typ, Utbud, Ort</h3>
     <Table striped bordered hover>
       <thead>
         <tr>
@@ -44,6 +47,7 @@ const RestaurantsList = () => {
         ))}
       </tbody>
     </Table>
+    </>
   );
 };
 
