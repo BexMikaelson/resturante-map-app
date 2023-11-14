@@ -9,7 +9,7 @@ const AdminDashboard = () => {
     const [restaurants, setRestaurants] = useState([]);
     const [name, setName] = useState('');
     const [Ort, setOrt] = useState('');
-    const [Website, setWebsite] = useState('');  
+    const [website, setWebsite] = useState('');  
     const [cuisine, setCuisine] = useState('');
     const [typ, setTyp] = useState('');
     const [phonenumber, setPhonenumber] = useState('');
@@ -43,7 +43,7 @@ const AdminDashboard = () => {
                 await updateDoc(doc(db, 'pizza resturants', currentRestaurantId), {
                     name,
                     Ort,
-                    Website, 
+                    website, 
                     Utbud: cuisine, 
                     Typ: typ, 
                     Telefon: phonenumber, 
@@ -59,7 +59,7 @@ const AdminDashboard = () => {
                 await addDoc(collection(db, 'pizza resturants'), {
                     name,
                     Ort,
-                    Website, 
+                    website, 
                     Utbud: cuisine, 
                     Typ: typ, 
                     Telefon: phonenumber, 
@@ -103,7 +103,7 @@ const AdminDashboard = () => {
         setCurrentRestaurantId(restaurant.id ?? '');
         setName(restaurant.name ?? '');
         setOrt(restaurant.Ort ?? '');
-        setWebsite(restaurant.Website ?? '');
+        setWebsite(restaurant.website ?? '');
         setCuisine(restaurant.Utbud ?? '');
         setTyp(restaurant.Typ ?? '');
         setPhonenumber(restaurant.Telefon ?? '');
@@ -141,7 +141,7 @@ const AdminDashboard = () => {
           </Row>
           <Row>
             <Form.Control
-              value={Website}
+              value={website}
               onChange={e => setWebsite(e.target.value)}
               placeholder="Restaurant Website"
             />
